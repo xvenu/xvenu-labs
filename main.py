@@ -1,42 +1,115 @@
 import os
 import psycopg2
+import datetime
+import smtplib
+from email.mime.text import MIMEText
+from flask import Flask, request, jsonify
 
-# Securely grab your remote production connection string from Render
+app = Flask(__name__)
+
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
-def get_active_trading_credentials():
-    """
-    Queries the production database on Render. Returns ONLY clients
-    who are marked as 'active' and whose 1-month rental window has not expired.
-    """
-    if not DATABASE_URL:
-        print("[-] Error: DATABASE_URL environment variable is missing.")
-        return []
+# SMTP Email Configuration Settings (using environment variables for security)
+SMTP_SERVER = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
+SMTP_PORT = int(os.environ.get('SMTP_PORT', 587))
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
+SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD') 
+
+def send_expiry_email(client_email, days_left):
+    """Sends a standardized email warning the client about subscription ending."""
+    if not SENDER_EMAIL or not SENDER_PASSWORD:
+        print("[-] Email credentials missing. Skipping notification transmission.")
+        return
+
+    subject = f"Action Required: Your Xvenu Trading Bot Access Expires in {days_left} Days"
+    body = f"""Hello,
+
+This is an automated notification from Xvenu Automation Labs. 
+
+Your active rental window for the Bybit Trade Fi Core bot engine is scheduled to expire on your next billing gate. 
+To avoid any execution gaps or missing active market position cycles, please ensure your renewal payment processes cleanly.
+
+If no payment signature is logged, your API routing profiles will drop from the 2% risk execution loop in exactly {days_left} days.
+
+Renew your seat here: https://xvenu-labs.vercel.app
+
+Best regards,
+Xvenu Infrastructure Engine
+"""
+    
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    msg['From'] = SENDER_EMAIL
+    msg['To'] = client_email
 
     try:
-        print("[+] Syncing with database to check active rental profiles...")
-        conn = psycopg2.connect(DATABASE_URL)
-        cursor = conn.cursor()
-        
-        # STRICT CUT-OFF: If next_billing_date is older than today, they are hidden automatically
-        cursor.execute('''
-            SELECT bybit_api_key, bybit_api_secret 
-            FROM clients 
-            WHERE subscription_status = 'active' 
-            AND next_billing_date >= CURRENT_DATE;
-        ''')
-        
-        active_vaults = cursor.fetchall()
-        cursor.close()
-        conn.close()
-        
-        print(f"[+] Successfully fetched {len(active_vaults)} active paying client portfolios.")
-        return active_vaults
-
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.starttls()
+            server.login(SENDER_EMAIL, SENDER_PASSWORD)
+            server.sendmail(SENDER_EMAIL, client_email, msg.as_string())
+        print(f"[+] Warning email transmitted successfully to: {client_email}")
     except Exception as e:
-        print(f"[-] Database connection error: {e}")
-        return []
+        print(f"[-] Failed to distribute notification email to {client_email}: {e}")
+
+
+@app.route('/webhook/gumroad', methods=['POST'])
+def gumroad_webhook():
+    """Listens to Gumroad checkout events to automatically set access dates."""
+    data = request.form
+    email = data.get('email')
+    event = data.get('event') # e.g., 'sale' or 'subscription_cancelled'
+    
+    if not email:
+        return jsonify({"error": "Missing client mapping context"}), 400
+
+    conn = psycopg2.connect(DATABASE_URL)
+    cursor = conn.cursor()
+
+    if event in ['sale', 'subscription_restart']:
+        # Set next billing date exactly 30 days out from today
+        renew_date = (datetime.date.today() + datetime.timedelta(days=30)).isoformat()
+        cursor.execute('''
+            UPDATE clients SET subscription_status = 'active', next_billing_date = %s 
+            WHERE email = %s;
+        ''', (renew_date, email))
+        print(f"[+] Gumroad Payment Logged: Activated {email} through {renew_date}")
+
+    elif event in ['subscription_cancelled', 'subscription_duration_ended']:
+        # Immediately flag as expired so trading stops
+        cursor.execute('''
+            UPDATE clients SET subscription_status = 'expired' WHERE email = %s;
+        ''', (email,))
+        print(f"[-] Gumroad Termination: Deactivated {email} API execution streams.")
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return jsonify({"status": "verified"}), 200
+
+
+@app.route('/cron/check-expiry', methods=['GET'])
+def check_upcoming_expirations():
+    """Daily cron route that finds clients expiring in exactly 5 days and emails them."""
+    conn = psycopg2.connect(DATABASE_URL)
+    cursor = conn.cursor()
+    
+    # Calculate target date exactly 5 days from today
+    target_warning_date = (datetime.date.today() + datetime.timedelta(days=5)).isoformat()
+    
+    cursor.execute('''
+        SELECT email FROM clients 
+        WHERE subscription_status = 'active' 
+        AND next_billing_date = %s;
+    ''', (target_warning_date,))
+    
+    expiring_clients = cursor.fetchall()
+    
+    for (email,) in expiring_clients:
+        send_expiry_email(email, days_left=5)
+        
+    cursor.close()
+    conn.close()
+    return jsonify({"checked_date": target_warning_date, "notified_count": len(expiring_clients)}), 200
 
 if __name__ == "__main__":
-    # Test fetch block when running manually
-    get_active_trading_credentials()
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
