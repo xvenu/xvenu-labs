@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xvenu Automation Labs - Trading Infrastructure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: '#151d30',
+                        accentGreen: '#10b981',
+                        accentBlue: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkBg text-gray-100 font-sans antialiased">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="border-b border-gray-800 bg-darkBg/80 backdrop-blur sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="./logo.png" alt="Xvenu Labs Logo" class="h-8 md:h-10 object-contain">
+        </div>
+        <nav class="space-x-6 text-sm hidden md:flex">
+            <a href="#marketplace" class="hover:text-accentGreen transition">Core Engines</a>
+            <a href="#pipelines" class="hover:text-accentGreen transition">Infrastructure Pipelines</a>
+            <a href="#order" class="hover:text-accentGreen transition">Custom Development</a>
+        </nav>
+        <a href="#order" class="bg-accentGreen hover:bg-emerald-600 text-darkBg text-sm font-semibold px-4 py-2 rounded transition">Inquire Order</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-6xl mx-auto px-6 py-16 text-center">
+        <span class="text-xs font-semibold tracking-widest text-accentGreen uppercase bg-accentGreen/10 px-3 py-1 rounded-full">Automation & Infrastructure Developer</span>
+        
+        <div class="flex justify-center mt-6 mb-2">
+            <img src="./logo.png" alt="Xvenu Logo" class="h-20 md:h-28 object-contain w-auto drop-shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-extrabold mt-4 tracking-tight leading-tight">
+            Production-Ready <span class="text-transparent bg-clip-text bg-gradient-to-r from-accentGreen to-accentBlue">Trading Automation</span>
+        </h1>
+        <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+            Deploy secure, institutional-grade execution systems across top financial and crypto architectures. Built to manage risk autonomously, run 24/7, and scale dynamically.
+        </p>
+        <div class="mt-10 space-x-4">
+            <a href="#marketplace" class="bg-accentGreen hover:bg-emerald-600 text-darkBg font-medium px-6 py-3 rounded shadow-lg transition">Explore Bots</a>
+            <a href="#order" class="border border-gray-700 hover:border-gray-500 text-gray-300 font-medium px-6 py-3 rounded transition">Custom Order</a>
+        </div>
+    </section>
+
+    <!-- ACTIVE SYSTEM MARKETPLACE -->
+    <section id="marketplace" class="max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-bold border-l-4 border-accentGreen pl-3 mb-2">Live Execution Architecture</h2>
+        <p class="text-gray-400 text-sm mb-8">Deployable production engines ready for instant integration.</p>
+        
+        <div class="max-w-xl mx-auto bg-cardBg border border-emerald-500/30 rounded-xl p-6 flex flex-col justify-between shadow-xl">
+            <div>
+                <div class="flex justify-between items-start">
+                    <span class="bg-emerald-500/10 text-accentGreen text-xs px-2.5 py-1 rounded font-mono font-bold tracking-wider uppercase">Live & Production Ready</span>
+                    <span class="text-xs text-gray-500 font-mono">v1.0.5</span>
+                </div>
+                <h3 class="text-2xl font-bold mt-4">Bybit Trade Fi Core</h3>
+                <p class="text-gray-400 text-sm mt-2">Autonomous trend parser and execution suite. Engineered with strict native risk profiling modules built for consistent performance profiles.</p>
+                <ul class="mt-4 space-y-2 text-sm text-gray-300">
+                    <li class="flex items-center"><span class="text-accentGreen mr-2">✓</span> Standardized 2% Capital Risk Ceiling per position</li>
+                    <li class="flex items-center"><span class="text-accentGreen mr-2">✓</span> Automated Real-time Stop-Loss & Parameter Execution</li>
+                    <li class="flex items-center"><span class="text-accentGreen mr-2">✓</span> Multi-Asset Parsing: Handles 7 Cryptocurrencies simultaneously</li>
+                    <li class="flex items-center"><span class="text-accentGreen mr-2">✓</span> Integrated 3 Bybit Trade Fi Market Execution Streams</li>
+                </ul>
+            </div>
+            <div class="mt-8 border-t border-gray-800 pt-6">
+                <div class="text-3xl font-black mb-4">$49<span class="text-xs text-gray-400 font-normal"> / month engine rental</span></div>
+                <a href="https://xvenu.gumroad.com/l/tlayh" target="_blank" class="block w-full bg-accentGreen hover:bg-emerald-600 text-darkBg text-center font-bold py-3 rounded transition text-sm">Rent Core Engine</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEVELOPMENT PIPELINES -->
+    <section id="pipelines" class="max-w-6xl mx-auto px-6 py-12 border-t border-gray-900---">
+        <h2 class="text-2xl font-bold border-l-4 border-accentBlue pl-3 mb-2">Infrastructure Pipelines</h2>
+        <p class="text-gray-400 text-sm mb-8">Ecosystem expansions currently running in development and staging locks.</p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- BINANCE -->
+            <div class="bg-cardBg/40 border border-gray-800 rounded-xl p-5 flex flex-col justify-between">
+                <div>
+                    <span class="bg-blue-500/10 text-accentBlue text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase">Staging</span>
+                    <h4 class="text-lg font-bold mt-2">Binance Core</h4>
+                    <p class="text-gray-400 text-xs mt-1">Expanding multi-asset risk parsing architectures into Binance Spot & Futures matching engines.</p>
+                </div>
+            </div>
+
+            <!-- TRADINGVIEW -->
+            <div class="bg-cardBg/40 border border-gray-800 rounded-xl p-5 flex flex-col justify-between">
+                <div>
+                    <span class="bg-purple-500/10 text-purple-400 text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase">In Dev</span>
+                    <h4 class="text-lg font-bold mt-2">TradingView Hub</h4>
+                    <p class="text-gray-400 text-xs mt-1">High-speed webhook relay infrastructure translating alerts into automated exchange transactions instantly.</p>
+                </div>
+            </div>
+
+            <!-- MT5 -->
+            <div class="bg-cardBg/40 border border-gray-800 rounded-xl p-5 flex flex-col justify-between">
+                <div>
+                    <span class="bg-yellow-500/10 text-yellow-500 text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase">Specs Lock</span>
+                    <h4 class="text-lg font-bold mt-2">MetaTrader 5 Link</h4>
+                    <p class="text-gray-400 text-xs mt-1">Low-latency engine bridges optimized for Forex, Commodities, and Index contract routing frameworks.</p>
+                </div>
+            </div>
+
+            <!-- BYBIT PREMIUM -->
+            <div class="bg-cardBg/40 border border-gray-800 rounded-xl p-5 flex flex-col justify-between">
+                <div>
+                    <span class="bg-emerald-500/10 text-accentGreen text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase">Planned</span>
+                    <h4 class="text-lg font-bold mt-2">Bybit Premium</h4>
+                    <p class="text-gray-400 text-xs mt-1">Enhanced high-frequency portfolio engines featuring dynamic compounding trailing modules.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOM DEVELOPMENT & ORDERS (NO FIVERR) -->
+    <section id="order" class="max-w-3xl mx-auto px-6 py-12">
+        <div class="bg-cardBg border border-gray-800 rounded-xl p-6 md:p-8">
+            <h2 class="text-2xl font-bold tracking-tight">Submit Custom Automation Requirements</h2>
+            <p class="text-gray-400 text-sm mt-1 mb-6">Need a custom strategy, specific webhook connector, or custom infrastructure build? Drop your exact specifications below.</p>
+            
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="POST" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono tracking-wider text-gray-400 uppercase mb-1">Your Email Address</label>
+                    <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-darkBg border border-gray-800 focus:border-accentGreen outline-none rounded p-3 text-sm text-gray-100 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono tracking-wider text-gray-400 uppercase mb-1">Project Scope & Exchange Targets (e.g. MT5, Bybit, TradingView)</label>
+                    <input type="text" name="scope" required placeholder="TradingView Webhook to Bybit Perpetuals Suite" class="w-full bg-darkBg border border-gray-800 focus:border-accentGreen outline-none rounded p-3 text-sm text-gray-100 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono tracking-wider text-gray-400 uppercase mb-1">Detailed Technical Requirements / Rules Order</label>
+                    <textarea name="message" rows="5" required placeholder="Describe system behavior, technical requirements, alert structures, and risk thresholds..." class="w-full bg-darkBg border border-gray-800 focus:border-accentGreen outline-none rounded p-3 text-sm text-gray-100 transition"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-accentGreen hover:bg-emerald-600 text-darkBg font-bold py-3 rounded text-sm tracking-wide shadow-lg transition">Transmit Custom Development Order</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-900 bg-darkBg text-center py-8 text-xs text-gray-500">
+        &copy; 2026 Xvenu Automation Labs. All rights reserved. Private Algorithmic Systems.
+    </footer>
+
+</body>
+</html>
