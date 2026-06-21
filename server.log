@@ -1,0 +1,33 @@
+nohup: ignoring input
+INFO:     Will watch for changes in these directories: ['/data/data/com.termux/files/home/xvenu-labs']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [10384] using StatReload
+INFO:     Started server process [10392]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:36062 - "POST /api/v1/verify-license HTTP/1.1" 403 Forbidden
+WARNING:  StatReload detected changes in 'test_bot.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10392]
+INFO:     Started server process [16205]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test_bot.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [16205]
+INFO:     Started server process [25785]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test_bot.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [25785]
+INFO:     Started server process [27426]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     102.215.34.22:0 - "POST /api/v1/verify-license HTTP/1.1" 403 Forbidden

@@ -1,0 +1,12 @@
+2026-06-19 13:47:27.028 EAT [2320] LOG:  starting PostgreSQL 18.2 on aarch64-unknown-linux-android, compiled by Android (13989888, +pgo, +bolt, +lto, +mlgo, based on r563880c) clang version 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f06077099aa41290cdb4c5e6fa0f59349), 64-bit
+2026-06-19 13:47:27.030 EAT [2320] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-06-19 13:47:27.032 EAT [2320] LOG:  listening on Unix socket "/data/data/com.termux/files/usr/tmp/.s.PGSQL.5432"
+2026-06-19 13:47:27.040 EAT [2331] LOG:  database system was shut down at 2026-06-19 13:47:12 EAT
+2026-06-19 13:47:27.055 EAT [2320] LOG:  database system is ready to accept connections
+2026-06-19 13:47:36.288 EAT [2439] ERROR:  database "postgres" already exists
+2026-06-19 13:47:36.288 EAT [2439] STATEMENT:  CREATE DATABASE postgres;
+2026-06-19 13:52:27.131 EAT [2329] LOG:  checkpoint starting: time
+2026-06-19 13:52:36.674 EAT [2329] LOG:  checkpoint complete: wrote 93 buffers (0.6%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=9.457 s, sync=0.038 s, total=9.546 s; sync files=54, longest=0.003 s, average=0.001 s; distance=534 kB, estimate=534 kB; lsn=0/17E94D0, redo lsn=0/17E9440
+2026-06-19 14:02:27.793 EAT [2329] LOG:  checkpoint starting: time
+2026-06-19 14:02:28.811 EAT [2329] LOG:  checkpoint complete: wrote 9 buffers (0.1%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.958 s, sync=0.011 s, total=1.021 s; sync files=5, longest=0.005 s, average=0.003 s; distance=53 kB, estimate=486 kB; lsn=0/17F6A10, redo lsn=0/17F69B8
+2026-06-19 14:40:45.650 EAT [17719] FATAL:  database "xvenu_db" does not exist
