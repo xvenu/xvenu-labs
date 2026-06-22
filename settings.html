@@ -22,8 +22,9 @@
 </head>
 <body class="bg-darkBg text-gray-100 min-h-screen flex flex-col justify-between font-sans">
 
+    <!-- Top Navigation Bar -->
     <nav class="border-b border-gray-900 bg-cardBg/30 backdrop-blur-md px-6 py-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <span class="text-xl font-black tracking-wider text-white">XV<span class="text-accentBlue">ENU</span></span>
                 <span class="bg-gray-800 text-gray-400 font-mono text-[10px] uppercase px-2 py-0.5 rounded font-bold tracking-widest">Labs</span>
@@ -32,19 +33,64 @@
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center p-6">
-        <div class="w-full max-w-lg bg-cardBg/60 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-lg">
-            
-            <div class="mb-6">
+    <!-- Main Dynamic Layout Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 md:p-8 items-start">
+        
+        <!-- LEFT COLUMN: Client Instructions & System Expectations -->
+        <div class="lg:col-span-7 space-y-6">
+            <div>
                 <div class="inline-flex items-center space-x-2 bg-blue-500/10 text-accentBlue text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase mb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-accentBlue animate-pulse"></span>
-                    <span>Node Provisioning</span>
+                    <span>System Parameters Manual</span>
                 </div>
-                <h2 class="text-2xl font-bold text-white tracking-tight">Connect Exchange Client</h2>
-                <p class="text-gray-400 text-xs mt-1">Input your localized parameters below to hook your autonomous bot instance into your Bybit account allocation pipeline securely.</p>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Onboarding & Client Expectations</h1>
+                <p class="text-gray-400 text-sm mt-1">Please read through these structural execution behaviors carefully before spinning up your node.</p>
+            </div>
+
+            <!-- Expectations Section -->
+            <div class="bg-cardBg/40 border border-gray-800/80 rounded-xl p-5 space-y-4">
+                <h3 class="text-sm font-bold font-mono uppercase tracking-wider text-accentBlue flex items-center">
+                    <span class="mr-2">📊</span> Tactical Trading Matrix
+                </h3>
+                <ul class="space-y-3 text-xs text-gray-400 list-none pl-0">
+                    <li class="flex items-start"><span class="text-accentBlue mr-2">▪</span> <strong>Execution Interval:</strong> The engine performs its data analysis once per trading day. It prioritizes daily trends over noisy intraday moves.</li>
+                    <li class="flex items-start"><span class="text-accentBlue mr-2">▪</span> <strong>Position Multi-Max:</strong> The bot can manage positions across multiple pairs simultaneously, running a maximum of 1 high-probability trade per pair each trading day.</li>
+                    <li class="flex items-start"><span class="text-accentBlue mr-2">▪</span> <strong>Strict Risk Management:</strong> Every single open position dynamically applies a strict 2% capital risk floor to preserve your balance.</li>
+                    <li class="flex items-start"><span class="text-accentBlue mr-2">▪</span> <strong>No Take-Profit Targets:</strong> This engine is designed without arbitrary profit caps. It rides massive trends indefinitely, automatically locking in profits using dynamic trailing stops as the asset runs.</li>
+                </ul>
+            </div>
+
+            <!-- Guide Section -->
+            <div class="bg-cardBg/40 border border-gray-800/80 rounded-xl p-5 space-y-4">
+                <h3 class="text-sm font-bold font-mono uppercase tracking-wider text-accentGreen flex items-center">
+                    <span class="mr-2">🔑</span> How to Find Your Bybit API Credentials
+                </h3>
+                <ol class="space-y-3 text-xs text-gray-400 list-decimal pl-4 font-sans">
+                    <li>Log into your <strong>Bybit Account</strong>, hover over your profile icon in the top-right corner, and select <strong class="text-gray-300">API</strong>.</li>
+                    <li>Click <strong class="text-gray-300">Create New Key</strong> &rarr; Select <strong class="text-gray-300">System-Generated API Keys</strong>.</li>
+                    <li>Set API Key Usage to <strong class="text-gray-300">Connect to Third-Party Applications</strong>.</li>
+                    <li>Set the access permissions to <strong class="text-accentGreen">Read-Write</strong>.</li>
+                    <li>Under the <strong class="text-gray-300">Unified Trading Account (UTA)</strong> column, check the boxes for <strong class="text-gray-200">Order</strong> and <strong class="text-gray-200">Positions</strong>. <span class="text-red-400 block mt-1 font-mono text-[11px] font-bold">⚠️ LEAVE 'WITHDRAWAL' UNCHECKED. The bot never needs permission to move your funds.</span></li>
+                    <li>Pass your 2FA verification security wall, then copy your <strong>API Key</strong> and <strong>API Secret</strong> over to the setup vault form on the right immediately.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Secure Input Form Gateway -->
+        <div class="lg:col-span-5 bg-cardBg/60 border border-gray-800 rounded-2xl p-6 shadow-2xl backdrop-blur-lg">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold text-white tracking-tight">Provision Trading Node</h2>
+                <p class="text-gray-400 text-xs mt-1">Provide your verified activation license string and credentials to establish your tracking instance.</p>
             </div>
 
             <form id="credentialForm" class="space-y-4">
+                <!-- Gumroad License Key Input Field -->
+                <div>
+                    <label class="block text-gray-300 text-xs font-mono font-bold uppercase mb-1.5 tracking-wider text-accentBlue">Gumroad License Key</label>
+                    <input type="text" id="licenseKey" required autocomplete="off"
+                        placeholder="XXXX-XXXX-XXXX-XXXX"
+                        class="w-full bg-darkBg/80 border border-gray-800 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentBlue transition-colors font-mono">
+                </div>
+
                 <div>
                     <label class="block text-gray-300 text-xs font-mono font-bold uppercase mb-1.5 tracking-wider">Account Email Address</label>
                     <input type="email" id="email" required autocomplete="email"
@@ -53,9 +99,9 @@
                 </div>
 
                 <div>
-                    <label class="block text-gray-300 text-xs font-mono font-bold uppercase mb-1.5 tracking-wider">Bybit API Key (Read/Trade Linear)</label>
+                    <label class="block text-gray-300 text-xs font-mono font-bold uppercase mb-1.5 tracking-wider">Bybit API Key</label>
                     <input type="text" id="apiKey" required autocomplete="off"
-                        placeholder="e.g. abcd1234EFGH5678"
+                        placeholder="Pasted Bybit API Key string"
                         class="w-full bg-darkBg/80 border border-gray-800 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentBlue transition-colors font-mono">
                 </div>
 
@@ -65,30 +111,34 @@
                         <input type="password" id="apiSecret" required autocomplete="off"
                             placeholder="••••••••••••••••••••••••"
                             class="w-full bg-darkBg/80 border border-gray-800 rounded-lg px-4 py-2.5 pr-10 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentBlue transition-colors font-mono">
-                        <button type="button" onclick="toggleSecretVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-300 text-xs">
+                        <button type="button" onclick="toggleSecretVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-300 text-xs font-mono">
                             Show
                         </button>
                     </div>
                 </div>
 
+                <!-- Strategic Security Notice Box -->
                 <div class="bg-darkBg border border-gray-900 rounded-lg p-3.5 flex items-start space-x-3">
                     <span class="text-accentBlue mt-0.5 text-sm">🔒</span>
                     <p class="text-gray-500 text-[11px] leading-relaxed">
-                        <strong class="text-gray-400">Cryptographic Protocol Protection:</strong> Inputs are packed via end-to-end 256-bit TLS transit routes and stored inside AES-256 symmetrical Fernet encryption containers. Withdrawals are mathematically blocked at API layer definitions.
+                        Inputs are processed via end-to-end TLS transit pathways and isolated inside AES-256 symmetrical Fernet encryption database fields on Render cloud networks.
                     </p>
                 </div>
 
+                <!-- Submit Button Engine -->
                 <button type="submit" id="submitBtn"
                     class="w-full bg-accentBlue hover:bg-sky-500 text-darkBg text-xs font-bold font-mono uppercase py-3 px-4 rounded-lg transition-all shadow-lg transform active:scale-[0.99] flex justify-center items-center">
                     <span>Synchronize Secure Engine Node</span>
                 </button>
             </form>
 
+            <!-- Alerts Container -->
             <div id="alertBox" class="mt-4 hidden p-3 rounded-lg text-xs font-mono transition-all text-center"></div>
-
         </div>
+
     </main>
 
+    <!-- Base Footer Section -->
     <footer class="border-t border-gray-900 px-6 py-4 text-center text-gray-600 text-[10px] font-mono">
         &copy; 2026 XVENU Autonomous Systems. Secure Sandbox Framework Instance.
     </footer>
@@ -112,33 +162,31 @@
             const submitBtn = document.getElementById('submitBtn');
             const alertBox = document.getElementById('alertBox');
             
+            const licenseKey = document.getElementById('licenseKey').value;
             const email = document.getElementById('email').value;
             const apiKey = document.getElementById('apiKey').value;
             const apiSecret = document.getElementById('apiSecret').value;
 
-            // Trigger visual processing load conditions
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span>Locking Vault Matrices...</span>';
             alertBox.classList.add('hidden');
 
             try {
-                // Point this fetch destination to your active Render API backend gateway URL
+                // Change this target string endpoint to match your Render API backend address
                 const response = await fetch('https://your-bybit-bot-backend.onrender.com/api/register', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, api_key: apiKey, api_secret: apiSecret })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ license_key: licenseKey, email, api_key: apiKey, api_secret: apiSecret })
                 });
 
                 const data = await response.json();
 
                 if (response.ok) {
                     alertBox.className = "mt-4 p-3 rounded-lg text-xs font-mono text-center bg-green-500/10 text-accentGreen border border-emerald-900/50";
-                    alertBox.textContent = "🎯 LINK SUCCESS: Symmetrical key matrix locked and distributed to core trading loop.";
+                    alertBox.textContent = "🎯 LINK SUCCESS: Activation key matched. Symmetrical key matrix locked and distributed to loop.";
                     document.getElementById('credentialForm').reset();
                 } else {
-                    throw new Error(data.message || "Vault connection rejected.");
+                    throw new Error(data.message || "Activation or vault entry rejected.");
                 }
             } catch (err) {
                 alertBox.className = "mt-4 p-3 rounded-lg text-xs font-mono text-center bg-red-500/10 text-red-400 border border-red-900/50";
