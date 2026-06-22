@@ -36,7 +36,7 @@
 
     <!-- Main Content Panel -->
     <main class="flex-grow max-w-7xl w-full mx-auto p-6 md:p-8">
-        
+
         <div class="mb-8">
             <h1 class="text-2xl font-bold text-white tracking-tight">Active Automation Systems</h1>
             <p class="text-gray-400 text-xs mt-1">Monitor, manage, and provision your algorithmic trading instances below.</p>
@@ -57,7 +57,7 @@
 
         <!-- Bot Instances Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
+
             <!-- LIVE BOT: Bybit Core Framework -->
             <div class="bot-card live bg-cardBg/60 border border-gray-800/80 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-xl transition-all">
                 <div>
@@ -70,11 +70,10 @@
 
                 <!-- Upgraded Multi-Action Button Layout -->
                 <div class="space-y-2 pt-2">
-                    <!-- Target Link Pointed to your Gumroad Checkout Segment -->
                     <a href="https://xvenu.gumroad.com/l/tlayh" target="_blank" class="block w-full text-center bg-accentGreen hover:bg-emerald-400 text-darkBg text-xs font-mono font-bold py-2.5 rounded-lg transition-colors shadow-md">
                         💳 Subscribe Now — $49/mo
                     </a>
-                    
+
                     <div class="flex items-center space-x-2">
                         <a href="settings.html" class="flex-1 text-center bg-gray-800 hover:bg-gray-700 text-white text-xs font-mono py-2 rounded-lg transition-colors border border-gray-700/50">
                             Setup Node
@@ -107,27 +106,66 @@
                         <div class="border-t border-gray-900 pt-2.5">
                             <h4 class="text-xs font-bold font-mono text-white uppercase tracking-wider mb-0.5">📧 Help Desk Link</h4>
                             <p class="text-gray-400 text-[11px]">
-                                Contact tech operations directly at: 
-                                <a href="mailto:support@xvenu.com" class="text-accentBlue hover:underline font-mono block mt-1 font-bold">support@xvenu.com</a>
+                                Contact tech operations directly at:
+                                <a href="mailto:xvenu.dev@protonmail.me" class="text-accentBlue hover:underline font-mono block mt-1 font-bold">xvenu.dev@protonmail.me</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- IN DEV BOT: MetaTrader 5 Forex Engine -->
-            <div class="bot-card dev bg-cardBg/30 border border-gray-900/60 rounded-2xl p-5 flex flex-col justify-between space-y-4 opacity-70 filter grayscale shadow-sm transition-all">
+            <!-- ACTIVATED LIVE BOT: MetaTrader 5 Forex Engine -->
+            <div class="bot-card live bg-cardBg/60 border border-gray-800/80 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-xl transition-all">
                 <div>
                     <div class="flex justify-between items-start">
-                        <h3 class="text-lg font-bold text-gray-500 font-mono">XVENU MT5 FX EA</h3>
-                        <span class="bg-amber-500/10 text-accentOrange text-[10px] uppercase font-mono px-2 py-0.5 rounded border border-amber-900/30 font-bold">In Development</span>
+                        <h3 class="text-lg font-bold text-white font-mono">XVENU MT5 FX EA</h3>
+                        <span class="bg-emerald-500/10 text-accentGreen text-[10px] uppercase font-mono px-2 py-0.5 rounded border border-emerald-900/30 font-bold">Operational</span>
                     </div>
-                    <p class="text-gray-500 text-xs mt-2">Automated MetaTrader Expert Advisor configured for high-liquidity Forex pairs and Gold assets. Backtesting currently processing.</p>
+                    <p class="text-gray-400 text-xs mt-2">Automated MetaTrader Expert Advisor configured for high-liquidity Forex pairs and Gold assets. Driven by institutional noise-scalping modules.</p>
                 </div>
-                <div class="pt-2">
-                    <button disabled class="w-full bg-gray-900 text-gray-600 text-xs font-mono py-2 rounded-lg cursor-not-allowed">
-                        ⚙️ Testing Phase Active
-                    </button>
+
+                <div class="space-y-2 pt-2">
+                    <a href="https://xvenu.gumroad.com/l/dgirf" target="_blank" class="block w-full text-center bg-accentGreen hover:bg-emerald-400 text-darkBg text-xs font-mono font-bold py-2.5 rounded-lg transition-colors shadow-md">
+                        💳 Purchase Access — $55
+                    </a>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="toggleSupportDrawer('mt5-pro-support')" class="flex-1 text-center bg-gray-800 hover:bg-gray-700 text-white text-xs font-mono py-2 rounded-lg transition-colors border border-gray-700/50">
+                            ⚙️ Setup Guide
+                        </button>
+                        <button onclick="toggleSupportDrawer('mt5-pro-support')" class="flex-1 bg-accentBlue/10 hover:bg-accentBlue/20 text-accentBlue text-xs font-mono py-2 rounded-lg transition-colors border border-accentBlue/20 font-bold">
+                            💬 Support
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive Setup & Support Drawer Elements -->
+                <div id="mt5-pro-support" class="hidden border-t border-gray-800/80 pt-4 mt-2 space-y-4">
+                    <div class="bg-darkBg/60 border border-gray-900 rounded-xl p-3.5 space-y-3">
+                        <div>
+                            <h4 class="text-xs font-bold font-mono text-accentOrange uppercase tracking-wider mb-1">1️⃣ Allow WebRequests in MT5</h4>
+                            <p class="text-gray-400 text-[11px] leading-relaxed">
+                                Go to MT5 Desktop ➔ Tools ➔ Options ➔ Expert Advisors. Check "Allow WebRequest for listed URL" and add exactly:<br>
+                                <code class="text-accentBlue select-all font-mono">https://xvenu-mt5-pro.onrender.com</code>
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold font-mono text-accentGreen uppercase tracking-wider mb-1">2️⃣ Mount & Verify inputs</h4>
+                            <p class="text-gray-400 text-[11px] leading-relaxed">
+                                Drag the EA onto your asset chart (XAUUSD/Gold, NAS100, or US30). In the Inputs parameters window, pass your credentials:<br>
+                                • Email: Your Gumroad checkout identity<br>
+                                • License Key: Your receipt token string<br>
+                                • Compound Risk: 2.0 (Maintains 2% max risk drawdown)
+                            </p>
+                        </div>
+                        <div class="border-t border-gray-900 pt-2.5">
+                            <h4 class="text-xs font-bold font-mono text-white uppercase tracking-wider mb-0.5">📧 Operations Contact</h4>
+                            <p class="text-gray-400 text-[11px]">
+                                Reach core engineering lines at:
+                                <a href="mailto:xvenu.dev@protonmail.me" class="text-accentBlue hover:underline font-mono block mt-1 font-bold">xvenu.dev@protonmail.me</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -149,12 +187,12 @@
         function filterBots(category) {
             const cards = document.querySelectorAll('.bot-card');
             const tabs = ['all', 'live', 'dev'];
-            
+
             tabs.forEach(t => {
                 const el = document.getElementById(`tab-${t}`);
                 el.className = "text-xs font-mono font-bold uppercase px-4 py-2 rounded-lg text-gray-400 hover:text-white transition-all";
             });
-            
+
             document.getElementById(`tab-${category}`).className = "text-xs font-mono font-bold uppercase px-4 py-2 rounded-lg bg-gray-800 text-white transition-all";
 
             cards.forEach(card => {
